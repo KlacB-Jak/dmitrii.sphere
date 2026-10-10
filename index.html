@@ -1,0 +1,336 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<meta name="theme-color" content="#000000">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black">
+<meta name="apple-mobile-web-app-title" content="НИИ «Сфера»">
+<title>НИИ «Сфера» · Досье</title>
+
+<link rel="icon" type="image/x-icon" href="favicon.ico?v=1">
+<link rel="icon" type="image/png" sizes="32x32" href="favicon.png?v=1">
+<link rel="shortcut icon" href="favicon.ico?v=1">
+<link rel="apple-touch-icon" sizes="180x180" href="favicon.png?v=1">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Handjet:wght@300;400;600;800&family=VT323&family=JetBrains+Mono:wght@300;400;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<!-- ============ BOOT ============ -->
+<div id="boot" class="boot">
+    <div class="boot__scan"></div>
+    <div class="boot__inner">
+        <pre class="boot__log" id="bootLog"></pre>
+    </div>
+</div>
+
+<!-- ============ ЭФФЕКТЫ ============ -->
+<div class="fx fx--scanlines"></div>
+<div class="fx fx--noise"></div>
+<div class="fx fx--vignette"></div>
+<div class="fx fx--grain"></div>
+<div class="fx fx--edge"></div>
+<div class="fx fx--glitch" id="fxGlitch"></div>
+
+<!-- ============ ОСНОВНОЙ ИНТЕРФЕЙС ============ -->
+<div class="shell" id="shell" hidden>
+
+    <header class="head">
+        <div class="head__left">
+            <a class="head__mark" href="#dossier" data-nav data-page="dossier">НИИ «СФЕРА»</a>
+            <span class="head__sub">Научно-исследовательский институт «Сфера»</span>
+        </div>
+        <div class="head__right">
+            <div class="vol">
+                <span class="vol__label">ЗВУК</span>
+                <input type="range" id="vol" min="0" max="100" value="50" class="vol__slider">
+                <button class="vol__mute" id="muteBtn">mute</button>
+            </div>
+        </div>
+    </header>
+
+    <nav class="tabs">
+        <a class="tab" data-nav data-page="dossier"       href="#dossier">Личное дело</a>
+        <a class="tab" data-nav data-page="dialog"        href="#dialog">Переписка</a>
+        <a class="tab" data-nav data-page="motivation"    href="#motivation">Мотивация</a>
+        <a class="tab" data-nav data-page="goals"         href="#goals">Личные подцели</a>
+        <a class="tab" data-nav data-page="goals-shared"  href="#goals-shared">Общие цели</a>
+    </nav>
+
+    <main class="content" id="content"></main>
+
+    <div class="hint-bar" id="hintBar">
+        <span class="hint-bar__dot"></span>
+        <span>клик по странице — открыть следующую реплику</span>
+    </div>
+
+    <footer class="foot">
+        <span>НИИ «СФЕРА» · 1974—1991</span>
+    </footer>
+</div>
+
+<!-- ============================================================
+     ШАБЛОНЫ СТРАНИЦ
+     ============================================================ -->
+
+<!-- ==================================================
+     1. ЛИЧНОЕ ДЕЛО
+     ================================================== -->
+<script type="text/template" id="tpl-dossier">
+<section class="doc doc--dossier">
+
+    <h2 class="doc__title">ЛИЧНОЕ ДЕЛО</h2>
+
+    <div class="dossier__name">Орлов Дмитрий Николаевич.</div>
+
+    <dl class="dossier__meta">
+        <div class="field">
+            <dt class="field__label">Возраст</dt>
+            <dd class="field__value">45 лет.</dd>
+        </div>
+        <div class="field">
+            <dt class="field__label">Пол</dt>
+            <dd class="field__value">мужской.</dd>
+        </div>
+        <div class="field field--wide">
+            <dt class="field__label">Образование</dt>
+            <dd class="field__value">СПбГУ, факультет психологии. Аспирантура. Кандидат наук. Тема диссертации: «Массовые галлюцинации: социально-психологический анализ».</dd>
+        </div>
+        <div class="field field--wide">
+            <dt class="field__label">Место работы</dt>
+            <dd class="field__value">независимый исследователь. Автор трёх монографий. Приглашенный лектор в трёх университетах.</dd>
+        </div>
+    </dl>
+
+    <div class="dossier__section">Биография</div>
+
+    <div class="dossier__body">
+        <p>Родился в Ленинграде, в семье научных работников. Отец — физик, мать — филолог. Дома — споры о науке и искусстве, книги, театры. С детства привык к скепсису: «Докажи. Иначе — не существует».</p>
+
+        <p>Поступил на психфак в 1998. Учился блестяще. На третьем курсе заинтересовался массовыми психозами. Курсовая — о «коллективных видениях» в средневековой Европе. Научный руководитель сказал: «Ты копаешь в интересном направлении».</p>
+
+        <p>В 2005 защитил кандидатскую. После — серия статей о «паранормальных явлениях» с точки зрения психологии. Разоблачал экстрасенсов, «магов», «целителей». Стал известен в узких кругах как «охотник на шарлатанов».</p>
+
+        <p>В 2010 вышла первая книга — «Внушение и реальность». В 2014 — «Массовые психозы XXI века». В 2019 — «Сон разума». Научно-популярные, но с претензией на серьёзный анализ.</p>
+
+        <p>Не женат. Никогда не был. Говорит: «Жена — это ответственность, а я не готов». На самом деле боится, что кто-то узнает: он не такой уверенный, каким кажется.</p>
+
+        <p>В 2022 начал изучать «сонную эпидемию». Как скептик. Искал объяснение: отравление, вирус, массовая истерия. Не нашёл. Данные не сходились. Случаи были слишком разбросаны, слишком случайны, слишком необъяснимы.</p>
+
+        <p>В 2024 случился первый сон. Комната с белыми стенами. На стене — детский рисунок. Мальчик, который сидит один в пустой комнате. Орлов проснулся в холодном поту. Проверил — рисунок был на стене его спальни. Он его не рисовал.</p>
+
+        <p class="dossier__final">С тех пор не спит без света. И не говорит об этом никому.</p>
+    </div>
+
+</section>
+</script>
+
+<!-- ==================================================
+     2. ПЕРЕПИСКА
+     ================================================== -->
+<script type="text/template" id="tpl-dialog">
+<section class="doc doc--dialog">
+
+    <h2 class="doc__title">РАЗГОВОР</h2>
+
+    <div class="scene print" data-lines='["Орлов сидит с чашкой кофе, читает диссертацию. Он расслаблен, кажется, что это обычный день. Звонок. Он смотрит на экран, хмурится — номер незнакомый. Всё-таки отвечает."]'></div>
+
+    <div class="chat">
+        <div class="chat__line print" data-lines='["— Дмитрий Николаевич?"]'></div>
+        <div class="chat__line print" data-lines='["— Да. Слушаю."]'></div>
+        <div class="chat__line print" data-lines='["— Я по поводу вашей статьи."]'></div>
+        <div class="chat__line print" data-lines='["— Какой статьи? Я ничего не публиковал."]'></div>
+        <div class="chat__line print" data-lines='["— Той, которая в столе. Про «сонную эпидемию»."]'></div>
+    </div>
+
+    <div class="scene print" data-lines='["Орлов отставляет чашку. Смотрит на экран телефона."]'></div>
+
+    <div class="chat">
+        <div class="chat__line print" data-lines='["— У вас есть доступ к моему столу?"]'></div>
+        <div class="chat__line print" data-lines='["— У нас есть доступ ко многому. Не пугайтесь. Я предлагаю."]'></div>
+        <div class="chat__line print" data-lines='["— Что предлагаете?"]'></div>
+        <div class="chat__line print" data-lines='["— Данные. Полные. По всем случаям. С 1979 года. Не только «сонная эпидемия» — вообще всё. Первые случаи. Первые сны. Первые комы."]'></div>
+        <div class="chat__line print" data-lines='["— У вас есть данные за 1979 год? Их не существует."]'></div>
+        <div class="chat__line print" data-lines='["— Существуют. В закрытом фонде. В НИИ «Сфера»."]'></div>
+    </div>
+
+    <div class="scene print" data-lines='["Орлов слышит название впервые. Медленно откидывается на спинку стула."]'></div>
+
+    <div class="chat">
+        <div class="chat__line print" data-lines='["— Я не знаю такого НИИ."]'></div>
+        <div class="chat__line print" data-lines='["— И не должны. Его закрыли в девяносто первом. Все документы — там. В подвале."]'></div>
+        <div class="chat__line print" data-lines='["— Вы предлагаете мне поехать туда?"]'></div>
+        <div class="chat__line print" data-lines='["— Да."]'></div>
+        <div class="chat__line print" data-lines='["— Зачем? Я не журналист. Я не сталкер. Я — психолог."]'></div>
+        <div class="chat__line print" data-lines='["— Именно поэтому. Нам нужен человек, который умеет смотреть на данные и не сходить с ума. Остальные уже сошли."]'></div>
+        <div class="chat__line print" data-lines='["— Это лестно. Но это не мотивация."]'></div>
+    </div>
+
+    <div class="scene print" data-lines='["Пауза. Голос тише."]'></div>
+
+    <div class="chat">
+        <div class="chat__line print" data-lines='["— Дмитрий Николаевич. Вы нашли на стене рисунок. Который не рисовали."]'></div>
+    </div>
+
+    <div class="scene print" data-lines='["Орлов замирает. Никому не говорил."]'></div>
+
+    <div class="chat">
+        <div class="chat__line print" data-lines='["— Откуда вы..."]'></div>
+        <div class="chat__line print" data-lines='["— Мы знаем. Мы знаем, что вы не спите без света. Мы знаем, что вы перестали публиковаться. Мы знаем, что вы боитесь."]'></div>
+        <div class="chat__line print" data-lines='["— Я не боюсь."]'></div>
+        <div class="chat__line print" data-lines='["— Вы боитесь. И правильно. Потому что то, что с вами происходит — не галлюцинация. И не внушение. И не психоз. Это след. След объекта. И если вы хотите понять — придется поехать туда, откуда этот след."]'></div>
+    </div>
+
+    <div class="scene print" data-lines='["Орлов долго молчит. Смотрит на улицу за окном."]'></div>
+
+    <div class="chat">
+        <div class="chat__line print" data-lines='["— Я могу взять диктофон?"]'></div>
+        <div class="chat__line print" data-lines='["— Можете. И блокнот. Вы — единственный, кому разрешаем."]'></div>
+        <div class="chat__line print" data-lines='["— Почему?"]'></div>
+        <div class="chat__line print" data-lines='["— Потому что вы — скептик. Нам нужен тот, кто не поверит сразу. То, что вы увидите — поверить легко. Вы должны сомневаться до конца."]'></div>
+        <div class="chat__line print" data-lines='["— А если я не смогу?"]'></div>
+        <div class="chat__line print" data-lines='["— Тогда поймёте, что ошибались двадцать лет. Это тоже результат. Не самый плохой."]'></div>
+        <div class="chat__line print" data-lines='["— Вы философ."]'></div>
+        <div class="chat__line print" data-lines='["— Я реалист. Двадцать второе марта. Адрес пришлём."]'></div>
+    </div>
+
+    <div class="scene scene--final print" data-lines='["Орлов кладёт трубку. Долго смотрит на чашку. Потом — на улицу. Через час — встаёт и идёт домой собирать чемодан."]'></div>
+
+</section>
+</script>
+
+<!-- ==================================================
+     3. МОТИВАЦИЯ
+     ================================================== -->
+<script type="text/template" id="tpl-motivation">
+<section class="doc doc--motivation">
+
+    <h2 class="doc__title">МОТИВАЦИЯ</h2>
+
+    <div class="motivation">
+        <p class="motivation__lead">Двадцать лет разоблачал шарлатанов. Экстрасенсы, маги, целители — все обман. А потом на стене его спальни появился детский рисунок. Он его не рисовал.</p>
+
+        <p class="motivation__final">Он идёт в комплекс не чтобы поверить. Он идёт, чтобы опровергнуть. Или чтобы признать: он ошибался 20 лет.</p>
+    </div>
+
+</section>
+</script>
+
+<!-- ==================================================
+     4. ЛИЧНЫЕ ПОДЦЕЛИ
+     ================================================== -->
+<script type="text/template" id="tpl-goals">
+<section class="doc doc--goals">
+
+    <h2 class="doc__title">ЛИЧНЫЕ ПОДЦЕЛИ</h2>
+
+    <ol class="goals">
+        <li class="goal">
+            <div class="goal__num">01</div>
+            <div class="goal__body">
+                <p class="goal__main">Найти переписку института с министерством. Проверить, что отвечали на запросы о побочных эффектах.</p>
+            </div>
+        </li>
+
+        <li class="goal">
+            <div class="goal__num">02</div>
+            <div class="goal__body">
+                <p class="goal__main">Найти докладные о состоянии персонала. Понять масштаб проблемы.</p>
+            </div>
+        </li>
+
+        <li class="goal">
+            <div class="goal__num">03</div>
+            <div class="goal__body">
+                <p class="goal__main">Найти расшифровку плёнки 1987 года. Сопоставить с фактами и показаниями свидетелей.</p>
+            </div>
+        </li>
+
+        <li class="goal">
+            <div class="goal__num">04</div>
+            <div class="goal__body">
+                <p class="goal__main">Найти технические характеристики ЭВМ «Морфей». Понять механику процесса.</p>
+            </div>
+        </li>
+    </ol>
+
+</section>
+</script>
+
+<!-- ==================================================
+     5. ОБЩИЕ ЦЕЛИ — НЕ ТРОГАЕМ
+     ================================================== -->
+<script type="text/template" id="tpl-goals-shared">
+<section class="doc doc--goals">
+
+    <h2 class="doc__title">ОБЩИЕ ЦЕЛИ</h2>
+
+    <ol class="goals">
+        <li class="goal">
+            <div class="goal__num">01</div>
+            <div class="goal__body">
+                <p class="goal__main">Проникнуть на территорию НИИ «Сфера».</p>
+            </div>
+        </li>
+
+        <li class="goal">
+            <div class="goal__num">02</div>
+            <div class="goal__body">
+                <p class="goal__main">Найти вход в подземный бункер.</p>
+            </div>
+        </li>
+
+        <li class="goal">
+            <div class="goal__num">03</div>
+            <div class="goal__body">
+                <p class="goal__main">Добраться до ЭВМ «Морфей» — ядро системы.</p>
+            </div>
+        </li>
+
+        <li class="goal">
+            <div class="goal__num">04</div>
+            <div class="goal__body">
+                <p class="goal__main">Запустить систему. Вывести из консервации.</p>
+            </div>
+        </li>
+
+        <li class="goal">
+            <div class="goal__num">05</div>
+            <div class="goal__body">
+                <p class="goal__main">Погрузиться в коллективный сон. Все восемь — одновременно.</p>
+            </div>
+        </li>
+
+        <li class="goal">
+            <div class="goal__num">06</div>
+            <div class="goal__body">
+                <p class="goal__main">Внутри сна — найти источник «сонной болезни».</p>
+            </div>
+        </li>
+
+        <li class="goal">
+            <div class="goal__num">07</div>
+            <div class="goal__body">
+                <p class="goal__main">Остановить распространение. Любым способом.</p>
+            </div>
+        </li>
+
+        <li class="goal">
+            <div class="goal__num">08</div>
+            <div class="goal__body">
+                <p class="goal__main">Вернуться с данными. Если получится — все. Если нет — хотя бы один.</p>
+            </div>
+        </li>
+    </ol>
+
+</section>
+</script>
+
+<script src="script.js"></script>
+</body>
+</html>
